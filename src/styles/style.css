@@ -41,6 +41,10 @@ nav{
     color: yellow;
 }
 
+.links.highlight{
+    color: yellow;
+}
+
 .intro{
     background-image: url('../assets/bg8.png');
     background-repeat: no-repeat;
