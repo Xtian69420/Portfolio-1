@@ -15,12 +15,13 @@
 <body>
     <div class="container">
         <nav>
-            <p class="links">INTRO</p>
-            <p class="links">SKILLS</p>
-            <p class="links">PROJECTS</p>
-            <p class="links">CONTACTS</p>
+            <p class="links" data-target="introId">INTRO</p>
+            <p class="links" data-target="skillId">SKILLS</p>
+            <p class="links" data-target="projectsId">PROJECTS</p>
+            <p class="links" data-target="contactsId">CONTACTS</p>
         </nav>
-        <div class="intro">
+
+        <div class="intro" id="introId">
             <img id="pfp" src="src/assets/1000093981.jpg" alt="Picture">
 
             <div class="introDesc">
@@ -45,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="skills">
+        <div class="skills" id="skillId">
             <h2>SKILLS</h2>
             <div class="scrollContainer">
                 <button class="btnControl" id="prev"><i class="fa-solid fa-angle-left"></i></button>
@@ -216,7 +217,7 @@
                 </div>
             </div>
         </div>
-        <div class="projects">
+        <div class="projects" id="projectsId">
             <h2>NOTABLE PROJECTS</h2>
             <div class="projCont">
                 <div class="left">
@@ -261,7 +262,7 @@
                 </div>
             </div>
         </div>
-        <div class="contacts">
+        <div class="contacts" id="contactsId">
             <div class="card1">
                  <h2 style="color: black;">HIRE ME!</h2>
                 <h3 style="font-weight: 300; color: black;">Experienced developer specializing in game, web, API, DB, and mobile app development. Let’s collaborate to turn your vision into reality.</h3>
@@ -297,5 +298,55 @@
     <script src="src/scripts/index.js"></script>
     <script src="src/scripts/projects.js"></script>
     <script src="src/scripts/contact-redirection.js"></script>
+
+<script>
+const sectionIds = ['introId', 'skillId', 'projectsId', 'contactsId'];
+const links = document.querySelectorAll('.links');
+
+function updateHighlightOnScroll() {
+    const offset = window.innerHeight * 0.15; 
+    let currentSectionIndex = 0;
+
+    sectionIds.forEach((id, index) => {
+        const section = document.getElementById(id);
+        const sectionTop = section.getBoundingClientRect().top - offset;
+
+        if (sectionTop <= 0) {
+            currentSectionIndex = index;
+        }
+    });
+
+    links.forEach(link => link.classList.remove('highlight'));
+    links[currentSectionIndex].classList.add('highlight');
+}
+
+links.forEach((link, index) => {
+    link.addEventListener('click', () => {
+        const target = document.getElementById(sectionIds[index]);
+
+        if (target) {
+            let targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+
+            if (index !== 1) {
+                const offset = window.innerHeight * 0.15;
+                targetPosition -= offset;
+            }
+
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+            links.forEach(link => link.classList.remove('highlight'));
+            link.classList.add('highlight');
+        }
+    });
+});
+
+// Trigger on load and scroll
+window.addEventListener('load', updateHighlightOnScroll);
+window.addEventListener('scroll', updateHighlightOnScroll);
+</script>
+
+
 </body>
 </html>
