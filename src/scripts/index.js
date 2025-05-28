@@ -5,22 +5,40 @@ var typed = new Typed('#auto-type', {
     loop: true
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const email = document.getElementById("email");
-    const copyIcon = document.getElementById("copyIcon");
-    const emailText = document.getElementById("emailText").textContent.trim();
+const emailCopyIcon = document.getElementById('copyIcon');
+const emailText = document.getElementById('emailText').textContent;
 
-    email.addEventListener("click", () => {
-        navigator.clipboard.writeText(emailText).then(() => {
+emailCopyIcon.addEventListener('click', () => {
+  navigator.clipboard.writeText(emailText).then(() => {
+    emailCopyIcon.style.color = 'green';
+    emailCopyIcon.title = 'Copied!';
+    
+    setTimeout(() => {
+      emailCopyIcon.style.color = 'black';
+      emailCopyIcon.title = 'Copy email';
+    }, 1500);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+  });
+});
+
+
+document.querySelectorAll('.contactItems[data-copy]').forEach(item => {
+    const copyIcon = item.querySelector('.copyIcon');
+    const textToCopy = item.getAttribute('data-copy');
+
+    item.addEventListener('click', () => {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            // Change icon color and tooltip on success
             copyIcon.style.color = "green";
             copyIcon.title = "Copied!";
 
             setTimeout(() => {
-                copyIcon.style.color = "#010005";
-                copyIcon.title = "Copy email";
+                copyIcon.style.color = "black";
+                copyIcon.title = copyIcon.classList.contains('fa-phone') ? "Copy number" : "Copy email";
             }, 1500);
         }).catch(err => {
-            console.error("Failed to copy: ", err);
+            console.error('Failed to copy: ', err);
         });
     });
 });
@@ -64,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 highlightCard(index);
                 index = (index + 1) % cards.length;
             }
-        }, 1500); 
+        }, 1500);
     }
 
     function stopCycle() {
@@ -72,13 +90,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     cards.forEach((card, i) => {
+        const circ = card.querySelector(".circ");
+        let pulseInterval;
+
         card.addEventListener("mouseenter", () => {
             isPaused = true;
             highlightCard(i);
+
+            if (circ) {
+                let visible = false;
+                circ.style.opacity = "0";
+                pulseInterval = setInterval(() => {
+                    visible = !visible;
+                    circ.style.opacity = visible ? "1" : "0";
+                }, 500);
+            }
         });
 
         card.addEventListener("mouseleave", () => {
             isPaused = false;
+
+            if (circ) {
+                clearInterval(pulseInterval);
+                circ.style.opacity = "0";
+            }
         });
     });
 

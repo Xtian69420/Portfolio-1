@@ -38,7 +38,7 @@ nav{
 }
 
 .links:active{
-    color: #747474;
+    color: yellow;
 }
 
 .intro{
@@ -246,9 +246,24 @@ h2{
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
 }
 
+.en:hover img {
+    filter: invert(1);
+    transition: filter 0.3s ease;
+}
+
+
 .stars img{
     width: 15%;
 }
+
+.en img {
+    width: 80px; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: filter 0.3s ease;
+}
+
 
 .technicalSkill{
     display: flex;
@@ -292,6 +307,18 @@ h2{
     transition: all 0.3s ease;
 }
 
+.circ{
+    display: none;
+    background-color: rgb(27, 214, 27);
+    width: 10px;
+    height: 10px;
+    margin-top: -8%;
+    margin-bottom: 5%;
+    margin-left: 1%;
+    border-radius: 10px;
+    transition: opacity 0.5s ease-in-out;
+}
+
 .ts h3,
 .ts p {
     color: #ffffff;
@@ -308,6 +335,10 @@ h2{
     transform: scale(1.02);
 }
 
+.ts.highlight .circ{
+    display: block;
+}
+
 .ts.highlight h3,
 .ts.highlight p {
     color: #ffffff;
@@ -320,6 +351,244 @@ h2{
     border-radius: 60px;
     margin-bottom: 1.5%;
 }
+
+.projects{
+    background-image: url("../assets/bg9.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin-top: 2%;
+    width: 93%;
+    height: auto;
+    justify-self: center;
+}
+
+.projCont{
+    margin-top: 4%;
+    display: flex;
+    width: 100%;
+    margin-bottom: 6%;
+}
+
+.left{
+    display: flex;
+    flex-wrap: wrap; 
+    width: 60%;
+    gap: 16px; 
+}
+
+.leftItems {
+    flex: 1 1 200px; 
+    min-width: 100px; 
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+    border-radius: 12px;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+        transition: 
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+.leftItems p{
+    color: #010005;
+}
+
+.leftItems:hover {
+    box-shadow: 0 8px 24px rgba(225, 225, 225, 0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+
+.leftItems img{
+    width: 45%;
+    max-width: 200px;
+    border-radius: 10px;
+    height: auto;
+    margin-right: 4%;
+}
+
+.leftItems:active{
+    background: #000000;
+    box-shadow: 0 8px 24px rgba(225, 225, 225, 0.18);
+    transform: translateY(-2px) scale(1.01);
+    border: 1.5px solid white;
+}
+
+.leftItems:active p{
+    color: #ffffff;
+}
+
+.leftItems.highlight{
+    background: #000000;
+    box-shadow: 0 8px 24px rgba(225, 225, 225, 0.18);
+    transform: translateY(-2px) scale(1.01);
+    border: 1.5px solid white;
+}
+
+.leftItems.highlight p{
+    color: #ffffff;
+}
+
+.right{
+    margin: 0 auto;
+    width: 38%;
+    height: auto;
+}
+
+.rightItems{
+    background: rgba(172, 172, 172, 0.278);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    transition: 
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.rightItems:hover {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    transform: translateY(-2px) scale(1.01);
+}
+
+.rightItems img{
+    margin-right: 3%;
+    width: 43%;
+    height: auto;
+    border-radius: 12px;
+}
+.rightItems h2{
+    font-size: 28px;
+}
+.up{
+    display: flex;
+    flex-direction: row;
+}
+
+.down{
+    margin-top: 2.5%;
+}
+
+#titleId{
+    margin-bottom: 10%;
+}
+#linkId{
+    cursor: pointer;
+    width: 100%;
+    height: 55px;
+    background-color: #ffffff;
+    color: #010005;
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+#linkId:hover{
+    background-color: #010005;
+    color: white;
+}
+
+
+#imgId{grid-area: image;}
+#titleId{grid-area: title;}
+#descId{grid-area: desc;}
+#linkId{grid-area: button;}
+
+.contacts {
+    background-image: url("../assets/bg10.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;     
+}
+
+.card1 {
+    margin-top: 2%;
+    background-color: rgba(162, 162, 162, 0.647);
+    backdrop-filter: blur(6px);
+    box-shadow: 10px 10px 10px rgba(87, 87, 87, 0.46);
+    display: flex;
+    flex-direction: column;
+    padding: 2% 10%;
+    max-width: 70%;
+    border-radius: 12px;
+    border: #808080 solid 1.0px;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    margin-bottom: 4%;
+}
+
+.card1:hover {
+    transform: scale(1.02) translateY(-5px);
+    box-shadow: 0 16px 24px rgba(87, 87, 87, 0.6);
+    background-color: rgba(200, 200, 200, 0.8);
+}
+
+.contactItems{
+    cursor: pointer;
+    margin-top: 2%;
+    background-color: rgba(162, 162, 162, 0.647);
+    backdrop-filter: blur(6px);
+    box-shadow: 10px 10px 10px rgba(87, 87, 87, 0.46);
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    margin: 0.3%;
+    border-radius: 10px;
+    border: #808080 solid 1.0px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: background 0.3s, box-shadow 0.3s;
+}
+.contactItems:hover {
+    background-color: #d1d1d1;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.contactItems p{
+    color: #010005;
+    margin: 0 auto;
+}
+
+.contactItems .fa-solid, .contactItems .fa-brands{
+    color: #010005;
+}
+
+.concon{
+    display: flex;
+}
+
+.end{
+    margin-bottom: 4%;
+}
+
+.contactItems {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.copyIcon {
+    visibility: hidden; 
+    color: black;
+    cursor: pointer;
+}
+
+.contactItems:hover .copyIcon {
+    visibility: visible;
+}
+
 
 @keyframes floatIn {
     0% {
@@ -421,7 +690,7 @@ h2{
         transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
     .en img, .en .fa-solid, .en .fa-regular{
-        width: 20px;
+        width: 10px;
         font-size: 10px;
     }
 
@@ -441,5 +710,29 @@ h2{
         justify-self: center;
         justify-items: center;
         align-items: center;
+    }
+    .projCont{
+        flex-direction: column;
+    }
+    .left{
+        justify-self: center;
+        justify-content: center;
+        width: 100%;
+        height: 10%;
+    }
+    .right{
+        display: none;
+    }
+    .card1 h2{
+        font-size: 18px;
+    }
+    .card1 h3{
+        font-size: 8px;
+    }
+    .card1{
+        margin-top: 5%;
+    }
+    .concon{
+        flex-direction: column;
     }
 }
