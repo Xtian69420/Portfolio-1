@@ -199,7 +199,7 @@
                 <div class="ts">
                     <img src="src/assets/L.png" alt="">
                     <h3>Leadership</h2>
-                    <p>I have experience leading teams and guiding group dynamics to ensure productive collaboration. I have successfully managed various projects, delegating tasks and fostering strong communication. Additionally, I have overseen organizational operations, contributing to strategic planning and overall efficiency.</p>
+                    <p>I have experience leading teams and guiding group dynamics to ensure productive collaboration. I have successfully managed various projects, delegating tasks and fostering strong communication. Additionally, I led organizational operations in our school, contributing to strategic planning and overall efficiency.</p>
                 </div>
                 <div class="ts">
                     <img src="src/assets/D.png" alt="">
@@ -214,102 +214,8 @@
             </div>
         </div>
     </div>
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const email = document.getElementById("email");
-        const copyIcon = document.getElementById("copyIcon");
-        const emailText = document.getElementById("emailText").textContent.trim();
-
-        email.addEventListener("click", () => {
-            navigator.clipboard.writeText(emailText).then(() => {
-                copyIcon.style.color = "green";
-                copyIcon.title = "Copied!";
-
-                setTimeout(() => {
-                    copyIcon.style.color = "#010005";
-                    copyIcon.title = "Copy email";
-                }, 1500);
-            }).catch(err => {
-                console.error("Failed to copy: ", err);
-            });
-        });
-    });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const scrollContainer = document.querySelector(".environment");
-    const btnControls = document.querySelectorAll(".btnControl");
-
-    const scrollAmount = 280;
-
-    btnControls[0].addEventListener("click", () => {
-        scrollContainer.scrollBy({
-            left: -scrollAmount,
-            behavior: "smooth"
-        });
-    });
-
-    btnControls[1].addEventListener("click", () => {
-        scrollContainer.scrollBy({
-            left: scrollAmount,
-            behavior: "smooth"
-        });
-    });
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".ts");
-        let index = 0;
-        let intervalId;
-        let isPaused = false;
-
-        function highlightCard(i) {
-            cards.forEach((card, idx) => {
-                card.classList.toggle("highlight", idx === i);
-            });
-        }
-
-        function startCycle() {
-            intervalId = setInterval(() => {
-                if (!isPaused) {
-                    highlightCard(index);
-                    index = (index + 1) % cards.length;
-                }
-            }, 1500); 
-        }
-
-        function stopCycle() {
-            clearInterval(intervalId);
-        }
-
-        cards.forEach((card, i) => {
-            card.addEventListener("mouseenter", () => {
-                isPaused = true;
-                highlightCard(i);
-            });
-
-            card.addEventListener("mouseleave", () => {
-                isPaused = false;
-            });
-        });
-
-        startCycle();
-    });
-</script>
-
-  <script>
-      var typed = new Typed('#auto-type', {
-      strings: ['FULLSTACK WEB', 'API SERVER', 'GAME', 'MOBILE APPLICATION'],
-      typeSpeed: 100,
-      backDelay: 1000,
-      loop: true
-      });
-  </script>
-
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+    <script src="src/scripts/index.js"></script>
 </body>
 </html>
