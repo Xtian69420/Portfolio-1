@@ -746,10 +746,11 @@ h2{
     }
 
     .ts.ts.highlight{
-        padding-top: 12%;
+        padding-top: 10%;
     }
     .ts p {
         font-size: 8px;
+        text-align: justify;
     }
     .technicalSkill{
         flex-direction: column;
