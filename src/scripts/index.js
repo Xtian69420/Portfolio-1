@@ -63,57 +63,69 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
-
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".ts");
     let index = 0;
     let intervalId;
     let isPaused = false;
+    const pulseIntervals = [];
 
     function highlightCard(i) {
         cards.forEach((card, idx) => {
-            card.classList.toggle("highlight", idx === i);
+            const circ = card.querySelector(".circ");
+
+            if (idx === i) {
+                card.classList.add("highlight");
+
+                // Start blinking if not already blinking
+                if (circ && !pulseIntervals[idx]) {
+                    let visible = false;
+                    circ.style.opacity = "0";
+                    pulseIntervals[idx] = setInterval(() => {
+                        visible = !visible;
+                        circ.style.opacity = visible ? "1" : "0";
+                    }, 500);
+                }
+
+            } else {
+                card.classList.remove("highlight");
+
+                // Stop blinking
+                if (circ && pulseIntervals[idx]) {
+                    clearInterval(pulseIntervals[idx]);
+                    pulseIntervals[idx] = null;
+                    circ.style.opacity = "0";
+                }
+            }
         });
     }
 
     function startCycle() {
+        highlightCard(index); 
+        index = (index + 1) % cards.length;
+
         intervalId = setInterval(() => {
             if (!isPaused) {
                 highlightCard(index);
                 index = (index + 1) % cards.length;
             }
-        }, 1500);
+        }, 2000);
     }
+
 
     function stopCycle() {
         clearInterval(intervalId);
     }
 
+    // Mouse interaction (optional)
     cards.forEach((card, i) => {
-        const circ = card.querySelector(".circ");
-        let pulseInterval;
-
         card.addEventListener("mouseenter", () => {
             isPaused = true;
-            highlightCard(i);
-
-            if (circ) {
-                let visible = false;
-                circ.style.opacity = "0";
-                pulseInterval = setInterval(() => {
-                    visible = !visible;
-                    circ.style.opacity = visible ? "1" : "0";
-                }, 500);
-            }
+            highlightCard(i); // ensure blinking starts too
         });
 
         card.addEventListener("mouseleave", () => {
             isPaused = false;
-
-            if (circ) {
-                clearInterval(pulseInterval);
-                circ.style.opacity = "0";
-            }
         });
     });
 

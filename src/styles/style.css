@@ -711,14 +711,43 @@ h2{
         margin: 20px;
         width: 70%;
         padding: 10%;
+
+        clip-path: polygon(
+            0% 0%, 
+            100% 0%, 
+            100% 30%, 
+            100% 80%, 
+            100% 100%, 
+            0% 100%, 
+            0% 80%, 
+            0% 20%
+        );
     }
 
-    .circ{
+    .circ {
         margin-top: -20px;
-        width: 5px;
-        height: 5px;
+        width: auto;
+        height: auto;
+        background: transparent;
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-size: 10px;
+        color: white;
+        border: 1px dashed white;
+        position: relative;
+        text-align: center;
     }
 
+    .circ::after {
+        content: "<< tap to focus >>";
+        font-size: 10px;
+        display: inline-block;
+        color: white;
+    }
+
+    .ts.ts.highlight{
+        padding-top: 12%;
+    }
     .ts p {
         font-size: 8px;
     }
