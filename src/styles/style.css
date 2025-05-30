@@ -331,12 +331,10 @@ h2{
 
 .ts:hover {
     background-color: #1a1a1f;
-    transform: scale(1.02);
 }
 
 .ts.highlight {
     background-color: #1a1a1f;
-    transform: scale(1.02);
 }
 
 .ts.highlight .circ{
@@ -690,29 +688,33 @@ h2{
     .en {
         scroll-snap-align: start;
         flex: 0 0 auto; 
-        width: 60%;
-        height: 80px;
+        width: 80%;
+        height: 100px;
         border-radius: 10px;
         margin: 5px;
         padding: 10px;
         text-align: center;
         transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .en img, .en .fa-solid, .en .fa-regular{
-        width: 20px;
+    .en img{
+        width: 40px;
         font-size: 10px;
     }
-
+    .btnControl{
+        width: 50%;
+        height: 10%;
+    }
     .ts img{
         width: 30px;
     }
     .ts{
         margin: 20px;
         width: 70%;
+        padding: 10%;
     }
 
     .circ{
-        margin-top: -1px;
+        margin-top: -20px;
         width: 5px;
         height: 5px;
     }
