@@ -370,7 +370,7 @@ h2{
     justify-self: center;
 }
 .projCont {
-    margin-top: 4%;
+    margin-top: 1%;
     display: flex;
     width: 100%;
     margin-bottom: 6%;
@@ -430,7 +430,7 @@ h2{
 }
 
 .leftItems.highlight {
-    background: #000000;
+    background: #6c6c6c;
     box-shadow: 0 8px 24px rgba(225, 225, 225, 0.18);
     transform: translateY(-2px) scale(1.01);
     border: 1.5px solid white;
@@ -755,6 +755,9 @@ h2{
     }
     .projCont{
         flex-direction: column;
+    }
+    #h3Projs{
+        font-size: 12px;
     }
     .left{
         width: 100%;
