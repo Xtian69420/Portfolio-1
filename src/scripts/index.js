@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 card.classList.remove("highlight");
 
-                // Stop blinking
-                if (circ && pulseIntervals[idx]) {
+                if (circ) {
                     clearInterval(pulseIntervals[idx]);
                     pulseIntervals[idx] = null;
                     circ.style.opacity = "0";
@@ -112,22 +111,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     }
 
-
-    function stopCycle() {
-        clearInterval(intervalId);
-    }
-
-    // Mouse interaction (optional)
     cards.forEach((card, i) => {
+        const circ = card.querySelector(".circ");
+
         card.addEventListener("mouseenter", () => {
             isPaused = true;
-            highlightCard(i); // ensure blinking starts too
+            highlightCard(i);
+
+            if (circ) {
+                circ.setAttribute("data-content", "<< tap outside to unfocus >>");
+                circ.style.setProperty("--circ-text", "'<< tap outside to unfocus >>'");
+            }
         });
 
         card.addEventListener("mouseleave", () => {
             isPaused = false;
+
+            if (circ) {
+                circ.removeAttribute("data-content");
+                circ.style.removeProperty("--circ-text");
+            }
         });
     });
 
     startCycle();
 });
+

@@ -293,21 +293,12 @@ h2{
     padding: 4%;
     width: 35%;
     margin: 8px;
-    border-radius: 20px;
+    border-radius: 50px 0 40px 0;
     user-select: none; 
     -webkit-user-select: none;
     -moz-user-select: none;   
     -ms-user-select: none;  
-    clip-path: polygon(
-        0% 0%, 
-        60% 0%, 
-        100% 30%, 
-        100% 80%, 
-        100% 100%, 
-        0% 100%, 
-        0% 80%, 
-        0% 20%
-    );
+
     transition: all 0.3s ease;
 }
 
@@ -709,19 +700,8 @@ h2{
     }
     .ts{
         margin: 20px;
-        width: 70%;
+        width: 90%;
         padding: 10%;
-
-        clip-path: polygon(
-            0% 0%, 
-            100% 0%, 
-            100% 30%, 
-            100% 80%, 
-            100% 100%, 
-            0% 100%, 
-            0% 80%, 
-            0% 20%
-        );
     }
 
     .circ {
@@ -739,7 +719,7 @@ h2{
     }
 
     .circ::after {
-        content: "<< tap to focus >>";
+        content: var(--circ-text, "<< tap to focus >>");
         font-size: 10px;
         display: inline-block;
         color: white;
