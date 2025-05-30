@@ -46,9 +46,9 @@ document.querySelectorAll('.contactItems[data-copy]').forEach(item => {
 document.addEventListener("DOMContentLoaded", () => {
     const scrollContainer = document.querySelector(".environment");
     const btnControls = document.querySelectorAll(".btnControl");
-
     const scrollAmount = 280;
 
+    // Button controls
     btnControls[0].addEventListener("click", () => {
         scrollContainer.scrollBy({
             left: -scrollAmount,
@@ -62,7 +62,41 @@ document.addEventListener("DOMContentLoaded", () => {
             behavior: "smooth"
         });
     });
+
+    // Drag to scroll
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    scrollContainer.addEventListener("mousedown", (e) => {
+        isDown = true;
+        scrollContainer.classList.add("dragging");
+        startX = e.pageX - scrollContainer.offsetLeft;
+        scrollLeft = scrollContainer.scrollLeft;
+    });
+
+    scrollContainer.addEventListener("mouseleave", () => {
+        isDown = false;
+        scrollContainer.classList.remove("dragging");
+    });
+
+    scrollContainer.addEventListener("mouseup", () => {
+        isDown = false;
+        scrollContainer.classList.remove("dragging");
+    });
+
+    scrollContainer.addEventListener("mousemove", (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - scrollContainer.offsetLeft;
+        const walk = (x - startX) * 2; // speed multiplier
+        scrollContainer.scrollLeft = scrollLeft - walk;
+    });
 });
+
+
+// technical skills
+
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".ts");
     let index = 0;
