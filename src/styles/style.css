@@ -709,6 +709,13 @@ h2{
         margin: 20px;
         width: 70%;
     }
+
+    .circ{
+        margin-top: -1px;
+        width: 5px;
+        height: 5px;
+    }
+
     .ts p {
         font-size: 8px;
     }
