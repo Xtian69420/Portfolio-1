@@ -368,7 +368,10 @@ h2{
     width: 93%;
     height: auto;
     justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .projCont {
     margin-top: 1%;
     display: flex;
@@ -430,7 +433,7 @@ h2{
 }
 
 .leftItems.highlight {
-    background: #6c6c6c;
+    background: #000000;
     box-shadow: 0 8px 24px rgba(225, 225, 225, 0.18);
     transform: translateY(-2px) scale(1.01);
     border: 1.5px solid white;
@@ -625,7 +628,7 @@ h2{
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 460px) {
     html {
         font-size: 70%;
     }
@@ -671,6 +674,8 @@ h2{
     .introS1{
         font-size: 6px;
         margin: 0;
+        padding: 5%;
+        border-radius: 7px;
         height: 50px;
         width: 180px;
     }
